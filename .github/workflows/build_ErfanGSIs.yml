@@ -42,6 +42,7 @@ jobs:
        
        - name: Setting up ErfanGSI requirements
          run: |
+              cd $GITHUB_WORKSPACE/ErfanGSIs
               mkdir ./output
               sudo bash ./setup.sh
        
@@ -50,13 +51,15 @@ jobs:
        
        - name: Zip GSI  
          run: |
+              cd $GITHUB_WORKSPACE/ErfanGSIs/output
               mkdir final
               zip -r final/GSI.zip ./*
        
        - name: Upload GSI to BitSend
          run: |
+              cd $GITHUB_WORKSPACE/ErfanGSIs/output
               curl -sL https://git.io/file-transfer | sh
-              ./transfer gof final/GSI.zip
+              ./transfer wet ./final/GSI.zip
 
          
             
