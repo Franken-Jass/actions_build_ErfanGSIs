@@ -56,6 +56,7 @@ jobs:
               zip -r final/GSI.zip ./*
        
        - name: Upload GSI to BitSend
+               cd $GITHUB_WORKSPACE/ErfanGSIs/output
          run: |
               curl -sL https://git.io/file-transfer | sh
               ./transfer gof final/GSI.zip
